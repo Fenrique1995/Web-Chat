@@ -39,6 +39,7 @@
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Register</button>
+                    <a href="{{ url('login') }}" class="btn btn-secondary ml-2">Back to Login</a>
                 </form>
             </div>
         </div>
