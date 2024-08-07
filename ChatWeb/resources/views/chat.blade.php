@@ -7,10 +7,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .chat-box {
-            height: calc(100vh - 60px); /* Ajusta el tamaño según sea necesario */
+            height: calc(100vh - 120px); /* Ajusta el tamaño para que deje espacio para el navbar y el formulario */
             overflow-y: scroll;
             border: 1px solid #ddd;
-            margin-bottom: 20px; /* Espacio para el formulario de mensajes */
+            margin-bottom: 0; /* Quitar el margen inferior para que esté pegado al formulario */
         }
         .chat-message {
             margin-bottom: 10px;
@@ -21,11 +21,16 @@
             height: 100vh;
         }
         .chat-form {
-            margin-top: auto; /* Mueve el formulario al final del contenedor */
             padding: 10px;
             background: #f8f9fa;
             border-top: 1px solid #ddd;
             display: flex;
+            align-items: center; /* Alinea verticalmente el contenido */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Asegura que esté sobre el contenido de chat */
         }
         .chat-form input {
             flex: 1;
@@ -33,6 +38,9 @@
         }
         .chat-form button {
             white-space: nowrap;
+        }
+        .navbar {
+            margin-bottom: 0; /* Quitar el margen inferior para que el chat-box esté pegado al navbar */
         }
     </style>
 </head>
@@ -63,7 +71,6 @@
                 @error('message')
                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                 @enderror
-                
             </form>
             <button type="submit" class="btn btn-primary ml-2">Send</button>
         </div>
