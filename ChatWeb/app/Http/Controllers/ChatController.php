@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ChatMessage;
+use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
-    public function index()
+    public function showChat()
     {
-        $messages = ChatMessage::with('user')->latest()->get();
+        $messages = ChatMessage::with('user')->get();
         return view('chat', compact('messages'));
     }
 
     public function sendMessage(Request $request)
     {
         $request->validate([
-            'message' => 'required|string|max:255',
+            'message' => 'required|string',
         ]);
 
         ChatMessage::create([
@@ -24,6 +24,12 @@ class ChatController extends Controller
             'message' => $request->message,
         ]);
 
-        return redirect()->route('chat');
+        return response()->json(['success' => true]);
+    }
+
+    public function getMessages()
+    {
+        $messages = ChatMessage::with('user')->get();
+        return view('partials.chat-messages', compact('messages'));
     }
 }
