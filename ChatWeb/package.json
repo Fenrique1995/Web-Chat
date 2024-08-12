@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "composer install --no-dev --optimize-autoloader && npm run prod"
+        "build": "composer install --no-dev --optimize-autoloader && npm run prod",
+        "prod": "npm run production"
     },
     "devDependencies": {
         "axios": "^1.6.4",
