@@ -1,13 +1,13 @@
 {
     "private": true,
-    "type": "module",
     "scripts": {
-        "build": "composer install --no-dev --optimize-autoloader && npm run prod",
-        "prod": "npm run production"
+      "preinstall": "curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer",
+      "build": "composer install --no-dev --optimize-autoloader && npm run prod",
+      "prod": "vite build"
     },
     "devDependencies": {
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0",
-        "vite": "^5.0"
+      "axios": "^1.6.4",
+      "laravel-vite-plugin": "^1.0",
+      "vite": "^5.0"
     }
 }
